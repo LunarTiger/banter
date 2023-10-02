@@ -1,5 +1,5 @@
 [
-  {name: 'portal-toggle', url: 'https://lunartiger.github.io/banter/assets/my_spaces.json'}
+  {name: 'portal-toggle', url: 'https://lunartiger.github.io/banter/my_spaces.json'}
 ].forEach(d => {
   AFRAME.registerComponent(d.name, {
     init: async function () {
