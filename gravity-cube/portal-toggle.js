@@ -22,6 +22,7 @@ function doPortals(button, portal_array) {
   existing.setAttribute('position', '1.5 -1.12 0.83');
   existing.setAttribute('visible', false);
   button.appendChild(existing);
+  console.log(existing.id);
   
   // Add the new portals based on the array
   for (let i = 0; i < portal_array.length; i++) {
@@ -29,6 +30,7 @@ function doPortals(button, portal_array) {
     this_portal.setAttribute('position', (i*2)+' 0 0'); 
     this_portal.setAttribute('href', portal_array[i]);
     existing.appendChild(this_portal);
+    console.log('portal made: '+portal_array[i]);
   }
   
   // return the portal parent
