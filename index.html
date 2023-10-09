@@ -8,11 +8,11 @@
     <link href="https://lunartiger.github.io/banter/assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script>
-      async function main() {
+      async function makePortals() {
         // constants for where to get the portals, where to spawn them, and the rotation they should be. change these to what you want
         const portalsURL = 'https://lunartiger.github.io/banter/my_spaces.json';
         const position = '0 0 0';
-        const rotation = '0';
+        const rotation = '180';
         
         //fetch the portals and make them
         const portals = await fetch(portalsURL);
@@ -44,7 +44,7 @@
       }
       
       // when the window is loaded run the main function
-      window.onload = () => {main();}
+      window.onload = () => {if(window.isBanter){makePortals();}}
     </script>
   </head>
   <body>
