@@ -72,32 +72,50 @@ a {
   text-decoration: underline;
 }
 
+p {
+  font-size: 40px;
+}
+
+pre {
+  font-size:30px;
+  width:90%;
+  background-color: #020;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 h1 {
+  font-size: 100px;
   font-family: ComicSans;
   color: #00ffff;
 }
 
 h2 {
+  font-size: 80px;
   font-family: ComicSans;
   color: #00ff00;
 }
 
 h3 {
+  font-size: 60px;
   font-family: ComicSans;
   color: #00be00;
 }
 
 h4 {
+  font-size: 40px;
   font-family: ComicSans;
   color: #006969;
 }
 
 h5 {
+  font-size: 35px;
   font-family: ComicSans;
   color: #006900;
 }
 
 h6 {
+  font-size: 30px;
   font-family: ComicSans;
   color: #00ff00;
 }
@@ -356,9 +374,8 @@ nav ul li a:hover {
 
 .encase {
     border-width: 0;
-    width: 75%;
+    width: 90%;
     height:auto;
-    max-width: 420px;
     margin-left:auto;
     margin-right:auto;
 }
