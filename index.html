@@ -22,7 +22,7 @@
           let this_link = linkJson[i];
           html = html+"<a href='"+this_link+"'>"+this_link+"</a><br>"
         }
-        document.getElementById("space-links").appendChild(html);
+        document.getElementById("space-links").innerHTML = html;
       }
 
       async function makePortals() {
