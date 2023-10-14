@@ -1,16 +1,15 @@
 @font-face {
     font-family: Lexend;
-    src: url("https://lunartiger.github.io/assets/");
+    src: url("https://lunartiger.github.io/assets/fonts/lexend/Lexend.ttf");
 }
 
 @font-face {
     font-family: ComicSans;
-    src: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/comic.ttf?v=1690234270123");
+    src: url("https://lunartiger.github.io/assets/fonts/comic_sans/comic.ttf");
 }
 
-body, html {
+html {
   background-color: #000;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/pride_cursor.cur?v=1690258277033"), pointer;
 }
 
 body {
@@ -36,7 +35,6 @@ footer{
 /* unvisited link */
 a:link {
   font-family: ComicSans;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/trans_cursor.cur?v=1690258330942"), pointer;
   color: #0ac139;
   text-decoration: underline;
 }
@@ -44,7 +42,6 @@ a:link {
 /* visited link */
 a:visited {
   font-family: ComicSans;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/trans_cursor.cur?v=1690258330942"), pointer;
   color: #0ac139;
   text-decoration: none;
 }
@@ -52,7 +49,6 @@ a:visited {
 /* mouse over link */
 a:hover {
   font-family: ComicSans;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/trans_cursor.cur?v=1690258330942"), pointer;
   color: #0ac139;
   text-decoration: underline;
 }
@@ -60,14 +56,12 @@ a:hover {
 /* selected link */
 a:active {
   font-family: ComicSans;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/trans_cursor.cur?v=1690258330942"), pointer;
   color: #0ac139;
   text-decoration: underline;
 }
 
 a {
   font-family: ComicSans;
-  cursor: url("https://cdn.glitch.global/9846f5ff-e57b-4c9e-b859-52047055a4c3/trans_cursor.cur?v=1690258330942"), pointer;
   color: #0ac139;
   text-decoration: underline;
 }
