@@ -19,12 +19,14 @@
         // make html and add it to the page
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
-          let this_link = linkJson[i];
+          const this_link = linkJson[i];
+          const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+portalsURL);
+          const space_info = await space.json();
           if(i != linkJson.length){
-            html = html+"<a href='"+this_link+"'>"+this_link+"</a><br>";
+            html = html+"<a href='"+this_link+"'>"+space_info.title+"</a><br>";
           }
           else {
-            html = html+"<a href='"+this_link+"'>"+this_link+"</a>";
+            html = html+"<a href='"+this_link+"'>"+space_info.title+"</a>";
           }
         }
         document.getElementById("space-links").innerHTML = html;
