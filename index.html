@@ -20,7 +20,12 @@
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
           let this_link = linkJson[i];
-          html = html+"<a href='"+this_link+"'>"+this_link+"</a><br>"
+          if(i != linkJson.length){
+            html = html+"<a href='"+this_link+"'>"+this_link+"</a><br>";
+          }
+          else {
+            html = html+"<a href='"+this_link+"'>"+this_link+"</a>";
+          }
         }
         document.getElementById("space-links").innerHTML = html;
       }
