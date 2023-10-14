@@ -20,9 +20,8 @@
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
           const this_link = linkJson[i];
-          const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+portalsURL);
+          const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
-          console.log(space_info);
           if(i != linkJson.length){
             html = html+"<a href='"+this_link+"'>"+space_info.title+"</a><br>";
           }
