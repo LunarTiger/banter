@@ -38,7 +38,7 @@
         // fetch the portals and make them
         const portals = await fetch(portalsURL);
         const portalJson = await portals.json();
-        const portalParent = doPortals(portalJson, position, rotation);
+        doPortals(portalJson, position, rotation);
       }
       
       function doPortals(portal_array, pos, rot) {
