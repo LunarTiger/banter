@@ -23,7 +23,8 @@
           const this_link = linkJson[i];
           const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
-          html = html+"<p><a href='"+this_link+"'>"+space_info.title+"</a></p>";
+          if(space_info.title){html = html+"<p><a href='"+this_link+"'>"+space_info.title+"</a></p>";}
+          else{html = html+"<p><a href='"+this_link+"'>"+this_link.replace("https://", "")+"</a></p>";}
         }
         document.getElementById("space-links").innerHTML = html;
       }
