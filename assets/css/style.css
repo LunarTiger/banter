@@ -10,6 +10,7 @@
 
 html {
   background-color: #000;
+  margin: 0;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
   color: #b3ef56;
   background-color: #000;
   font-size: 40px;
+  margin: 0;
 }
 
 footer{
