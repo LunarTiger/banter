@@ -12,6 +12,7 @@
       const portalsURL = 'https://lunartiger.github.io/banter/my_spaces.json';
 
       async function makeLinks(){
+        document.getElementById("space-links").innerHTML = "Loading . . .";
         //fetch the spaces and make the links
         const links = await fetch(portalsURL);
         const linkJson = await links.json();
@@ -67,13 +68,9 @@
       }
       
       // when the window is loaded make portals/links
-      addEventListener("DOMContentLoaded" = () => {
-        if(window.isBanter){
-          makePortals();
-        }
-        else {
-          makeLinks();
-        }
+      addEventListener("DOMContentLoaded", () => {
+        if(window.isBanter){makePortals();}
+        else {makeLinks();}
       });
     </script>
   </head>
@@ -86,7 +83,7 @@
     <h1>Rev. Lunar's Banter Spaces</h1>
     <h3>links to my spaces in Banter</h3>
     <p>these are spaces made for and viewable in <a href="https://bantervr.com">Banter</a>.</p>
-    <p id="space-links"></p>
+    <p id="space-links">script should change this</p>
     <p><a href="banter://lunartiger.github.io/banter">open in Banter</a></p>
     <p><a href="https://rev-lunar.glitch.me">rev-lunar.glitch.me</a></p>
   </body>
