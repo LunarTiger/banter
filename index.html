@@ -23,12 +23,7 @@
           const this_link = linkJson[i];
           const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
-          if(i != linkJson.length){
-            html = html+"<a href='"+this_link+"'>"+space_info.title+"</a><br>";
-          }
-          else {
-            html = html+"<a href='"+this_link+"'>"+space_info.title+"</a>";
-          }
+          html = html+"<p><a href='"+this_link+"'>"+space_info.title+"</a></p>";
         }
         document.getElementById("space-links").innerHTML = html;
       }
