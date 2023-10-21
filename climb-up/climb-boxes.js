@@ -129,6 +129,6 @@ async function create() {
   unlockPlayer();
 }
 
-addEventListener("DOMContentLoaded", () => {
-  if(window.isBanter){create();};
-});
+window.loadDoneCallback = () => {
+  if(window.isBanter){movePlayer({x: 0, y: 0.1, z: 2});create();}
+}
