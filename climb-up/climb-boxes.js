@@ -31,8 +31,6 @@ AFRAME.registerComponent('next-button', {
 });
 
 async function createClimbBox(ypos) {
-  let climb = false;
-  if (Math.round(Math.random())) {climb = true;}
   let box = document.createElement('a-box');
   box.setAttribute('color', 'rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')');
   box.setAttribute('position', '0 '+ypos+' 0');
@@ -40,7 +38,7 @@ async function createClimbBox(ypos) {
   box.setAttribute('depth', '1');
   box.setAttribute('width', '0.420');
   box.setAttribute('height', '1');
-  if (climb) {box.setAttribute('sq-climbable', true);}
+  if (Math.round(Math.random())) {box.setAttribute('sq-climbable', true);}
   box.setAttribute('sq-collider', true);
   return box;
 }
