@@ -101,9 +101,6 @@ async function create() {
     create();
     return;
   }
-  let red = Math.round(Math.random()*255).toString(16).padStart(2, '0');
-  let green = Math.round(Math.random()*255).toString(16).padStart(2, '0');
-  let blue = Math.round(Math.random()*255).toString(16).padStart(2, '0');
   let holder = document.createElement('a-entity');
   holder.id = "climb-boxes";
   holder.setAttribute('position', '0 '+(level*103)+' 0');
@@ -114,7 +111,7 @@ async function create() {
   floor.setAttribute('width', '10');
   floor.setAttribute('height', '2');
   floor.setAttribute('sq-collider', true);
-  floor.setAttribute('color', '#'+red+green+blue);
+  floor.setAttribute('color', 'rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')');
   holder.appendChild(floor)
   for (let i = 2; i < 103; i++) {
     let box = await createClimbBox(i);
