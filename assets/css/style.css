@@ -209,6 +209,7 @@ nav ul {
 nav ul li  {
     border-right: 5px dashed #006900;
     display: inline-block;
+    cursor: pointer;
 }
 
 nav ul li:last-child {
