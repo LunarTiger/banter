@@ -20,7 +20,7 @@
         // make html and add it to the page
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
-          document.getElementById("space-links").innerHTML = "Loading link "+(i+1)+"/"+links.length;
+          document.getElementById("space-links").innerHTML = "Loading link "+(i+1)+"/"+linkJson.length;
           const this_link = linkJson[i];
           const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
