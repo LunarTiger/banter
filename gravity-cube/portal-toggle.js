@@ -1,19 +1,21 @@
-[
-  {name: 'portal-toggle', url: 'https://lunartiger.github.io/banter/my_spaces.json'}
-].forEach(d => {
-  AFRAME.registerComponent(d.name, {
-    init: async function () {
-      const portals = await fetch(d.url);
-      const portalJson = await portals.json();
-      const portalParent = doPortals(this.el, portalJson);
-      let visible = false;
-      this.el.addEventListener('click', () => {
-        visible = !visible;
-        portalParent.setAttribute('visible', visible);
-      });
-    }
+if(window.isBanter){
+  [
+    {name: 'portal-toggle', url: 'https://lunartiger.github.io/banter/my_spaces.json'}
+  ].forEach(d => {
+    AFRAME.registerComponent(d.name, {
+      init: async function () {
+        const portals = await fetch(d.url);
+        const portalJson = await portals.json();
+        const portalParent = doPortals(this.el, portalJson);
+        let visible = false;
+        this.el.addEventListener('click', () => {
+          visible = !visible;
+          portalParent.setAttribute('visible', visible);
+        });
+      }
+    });
   });
-});
+}
 
 function doPortals(button, portal_array) {  
   
