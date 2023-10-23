@@ -20,6 +20,7 @@
         // make html and add it to the page
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
+          document.getElementById("space-links").innerHTML = "Loading link "+(i+1)+"/"+links.length;
           const this_link = linkJson[i];
           const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
@@ -78,7 +79,7 @@
 
     <h1>Rev. Lunar's Banter Spaces</h1>
     <h3>links to my spaces in Banter</h3>
-    <div class="encase" id="space-links">script should change this</div>
+    <div class="encase" id="space-links">this is changed by a script, if you see this message make sure scripts are enabled and <a href="https://lunartiger.github.io/banter">refresh</a></div>
     <hr>
     <p>these are spaces made for and viewable in <a href="https://bantervr.com">Banter</a>.</p>
     <p><a href="banter://lunartiger.github.io/banter">open in Banter</a></p>
