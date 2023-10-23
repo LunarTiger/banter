@@ -209,7 +209,6 @@ nav ul {
 nav ul li  {
     border-right: 5px dashed #006900;
     display: inline-block;
-    cursor: pointer;
 }
 
 nav ul li:last-child {
@@ -239,6 +238,7 @@ nav ul li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* unvisited link */
