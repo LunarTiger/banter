@@ -12,20 +12,21 @@
       const portalsURL = 'https://lunartiger.github.io/banter/my_spaces.json';
 
       async function makeLinks(){
-        document.getElementById("space-links").innerHTML = "Loading . . .";
+        document.getElementById("space-links").innerHTML = "<p>Loading . . .</p>";
         //fetch the spaces and make the links
         const links = await fetch(portalsURL);
         const linkJson = await links.json();
+        if(!linkJson){document.getElementById("space-links").innerHTML = "<mark>Loading failed :'(</mark>";return;}
 
         // make html and add it to the page
         let html= "";
         for (let i = 0; i < linkJson.length; i++) {
-          document.getElementById("space-links").innerHTML = "Loading link "+(i+1)+"/"+linkJson.length;
+          document.getElementById("space-links").innerHTML = html+"<p>Loading link "+(i+1)+"/"+linkJson.length+"</p>";
           const this_link = linkJson[i];
           const space = await fetch("https://api.sidequestvr.com/v2/urlmetadata?url="+this_link);
           const space_info = await space.json();
           if(space_info.title){html = html+"<p><a href='"+this_link+"'>"+space_info.title+"</a></p>";}
-          else{html = html+"<p><a href='"+this_link+"'>"+this_link.replace("https://", "")+"</a></p>";}
+          else{html = html+"<p><a href=\""+this_link+"\">"+this_link.replace("https://", "")+"</a></p>";}
         }
         document.getElementById("space-links").innerHTML = html;
       }
