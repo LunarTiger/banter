@@ -109,27 +109,16 @@ async function thisLevel() {
 }
 
 async function destroy(elid) {
+  if(!elid){return;}
   const old_one = document.getElementById(elid);
   if(old_one) {
     const old_children = old_one.children;
     if(old_children) {
       for (let i = 0; i < old_children.length; i++){
-        await killChildren(old_children[i]);
+        await destroy(old_children[i]);
       }
     }
     old_one.parentElement.removeChild(old_one);
-  }
-}
-
-async function killChildren(child) {
-  if(child){
-    const grandchildren = child.children;
-    if(grandchildren){
-      for (let i = 0; i < grandchildren.length; i++){
-        await killChildren(grandchildren[i]);
-      }
-    }
-    child.parentElement.removeChild(child);
   }
 }
 
