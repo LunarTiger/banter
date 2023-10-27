@@ -82,6 +82,32 @@ async function createNextButton(ypos) {
   return box;
 }
 
+async function thisLevel() {
+  //create box
+  let box = document.createElement('a-box');
+  let red = Math.round(Math.random()*255).toString(16).padStart(2, '0');
+  let green = Math.round(Math.random()*255).toString(16).padStart(2, '0');
+  let blue = Math.round(Math.random()*255).toString(16).padStart(2, '0');
+  box.setAttribute('color', 'rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')');
+  box.setAttribute('position', '-5 1.5 0');
+  box.setAttribute('rotation', '0 90 0');
+  box.setAttribute('depth', '0.05');
+  box.setAttribute('width', '0.9');
+  box.setAttribute('height', '0.3');
+  // create text
+  let txtval = 'You have climbed\n'+level+' level';
+  if (level != 1){txtval = txtval + 's';}
+  let text = document.createElement('a-text');
+  text.setAttribute('color', '#'+red+green+blue);
+  text.setAttribute('position', '0 0 0.03');
+  text.setAttribute('scale', '0.5 0.5');
+  text.setAttribute('value', txtval);
+  text.setAttribute('align', 'center');
+  // parent the text to the box and return the box
+  box.appendChild(text);
+  return box;
+}
+
 async function destroy() {
   const old_one = document.getElementById('climb-boxes');
   if(old_one) {
@@ -119,7 +145,9 @@ async function create() {
   }
   //create the button and add everything
   let next = await createNextButton(103.666);
+  let level_display = await thisLevel();
   holder.appendChild(next);
+  holder.appendChild(level_display);
   document.querySelector('a-scene').appendChild(holder);
   unlockPlayer();
 }
