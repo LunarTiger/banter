@@ -3,13 +3,28 @@ let clicked = false;
 
 AFRAME.registerComponent('respawner', {
   init: function() {
-    this.el.addEventListener('trigger-enter', ()=>{
+    this.el.addEventListener('trigger-enter', async()=>{
       if(this.el.object3D.userData.isLocalPlayer){
         level = 0;
+        const max_size = 2000;
+        let x = Math.random()*max_size;
+        let z = Math.random()*max_size;
+        if(Math.round(Math.random())){x = -x;}
+        if(Math.round(Math.random())){z = -z;}
+        movePlayer({x: x, y: -2000, z: z});
         lockPlayer();
-        movePlayer({x: 0, y: 0.1, z: 2});
-        create();
-        console.log("you fell");
+        let place = 'banter://sq-community.glitch.me';
+        const raw_users = await fetch('https://sq-community.glitch.me/user-buttons.json');
+        if(!raw_users){openPage(place);return;}
+        const users = await raw_users.json();
+        if(!users){openPage(place);return;}
+        const raw_user_spaces = await fetch(users[(Math.round(Math.random()*(users.length-2)))].url);
+        if(!raw_user_spaces){openPage(place);return;}
+        const user_spaces = await raw_user_spaces.json();
+        if(!user_spaces){openPage(place);return;}
+        let space = user_spaces[(Math.round(Math.random()*(user_spaces.length-1)))].replace("https://", "banter://").replace("http://", "banter://");
+        if(space){place=space;}
+        openPage(place);
       }
     });
   }
