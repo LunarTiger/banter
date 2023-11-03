@@ -133,6 +133,10 @@ hr {
   border-width: 1px;
 }
 
+img {
+    border-radius:10px;
+}
+
 details {
   font-family:ComicSans;
   margin-bottom:1em;
