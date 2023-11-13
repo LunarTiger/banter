@@ -23,11 +23,12 @@ addEventListener("DOMContentLoaded", () => {
 function makeElement(type, html, link) {
   if(!type || !html){return;}
   let el = document.createElement(type);
+  let p = null;
   switch(type){
     case 'img': el.src = html; el.width="800px"; el.height="auto"; el.style="max-width:100%"; break;
     case 'a': if(link){el.href = link; el.innerHTML = html; let p = document.createElement('p'); p.appendChild(el);} break;
     default: el.innerHTML = html;
   }
-  if(type == 'a'){document.querySelector('body').appendChild(p);}
+  if(p){document.querySelector('body').appendChild(p);}
   else{document.querySelector('body').appendChild(el);}
 }
