@@ -6,13 +6,14 @@ addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
     const meta = document.getElementsByTagName('meta');
     for (let i = 0; i < meta.length; i++) {
-      let this_val = null;
-      try{this_val = meta[i].attributes.property.value;}
+      let this_property = null;
+      let this_content = null;
+      try{this_property = meta[i].attributes.property.value; this_content = meta[i].attributes.content.value;}
       catch{console.log("couldn't read the value");}
-      finally{switch(this_val){
-        case 'og:title': title = meta[i].this_val; break;
-        case 'og:description': description = this_val; break;
-        case 'og:image': image = this_val; break;
+      finally{switch(this_property){
+        case 'og:title': title = this_content; break;
+        case 'og:description': description = this_content; break;
+        case 'og:image': image = this_content; break;
       }}
     }
     if(title){makeElement('h1', title);}
