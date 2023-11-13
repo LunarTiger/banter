@@ -1,12 +1,10 @@
 let title = null;
 let description = null;
 let image = null;
-let parent = 'body'
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
     const meta = document.getElementsByTagName('meta');
-    if(document.getElementById('banter-info')){parent = 'banter-info';}
     for (let i = 0; i < meta.length; i++) {
       let this_property = null;
       let this_content = null;
@@ -33,6 +31,8 @@ function makeElement(type, html, link) {
     case 'a': if(link){el.href = link; el.innerHTML = html;} break;
     default: el.innerHTML = html;
   }
-  if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); document.querySelector('body').appendChild(p);}
-  else{document.querySelector(parent).appendChild(el);}
+  let parent = document.querySelector('body');
+  if(document.getElementById('banter-info')){parent = document.getElementById('banter-info');}
+  if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
+  else{parent.appendChild(el);}
 }
