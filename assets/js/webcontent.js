@@ -21,7 +21,7 @@ addEventListener("DOMContentLoaded", () => {
 });
 
 function makeElement(type, html, link) {
-  if(!type || !html){break;}
+  if(!type || !html){return;}
   let el = document.createElement(type);
   switch(type){
     case 'img': el.src = html; el.width="800px"; el.height="auto"; el.style="max-width:100%"; break;
