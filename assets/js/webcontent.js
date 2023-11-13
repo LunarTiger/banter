@@ -6,13 +6,13 @@ addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
     const meta = document.getElementsByTagName('meta'); console.log(meta);
     for (let i = 0; i < meta.length; i++) {
-      try{const this_val = meta[i].attributes.property.value;}
-      catch{const this_val = null;}
-      finally{switch(this_val){
+      let this_val = null;
+      try{this_val = meta[i].attributes.property.value;}
+      switch(this_val){
         case 'og:title': title = meta[i].this_val; break;
         case 'og:description': description = this_val; break;
         case 'og:image': image = this_val; break;
-      }}
+      }
     }
     if(title){makeElement('h1', title);}
     if(image){makeElement('img', image);}
