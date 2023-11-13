@@ -6,10 +6,10 @@ addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
     const meta = document.getElementsByTagName('meta'); console.log(meta);
     for (let i = 0; i < meta.length; i++) {
-      switch(meta[i].property){
-        case 'og:title': title = meta[i].content; break;
-        case 'og:description': description = meta[i].content; break;
-        case 'og:image': image = meta[i].content; break;
+      switch(meta[i].attributes.property.value){
+        case 'og:title': title = meta[i].attributes.content.value; break;
+        case 'og:description': description = meta[i].attributes.content.value; break;
+        case 'og:image': image = meta[i].content.attributes.value; break;
       }
     }
     if(title){makeElement('h1', title);}
