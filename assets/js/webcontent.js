@@ -28,8 +28,7 @@ function makeElement(type, html, link) {
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
       default: el.innerHTML = html;
     }
-    let parent = document.querySelector('body');
-    if(document.getElementById('banter-info')){parent = document.getElementById('banter-info');}
+    const parent = document.getElementById('banter-info')  ? document.getElementById('banter-info') : document.querySelector('body');
     if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
     else{parent.appendChild(el);}
   }
