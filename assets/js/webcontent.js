@@ -28,7 +28,7 @@ function makeElement(type, html, link) {
   if(!type || !html){return;}
   let el = document.createElement(type);
   switch(type){
-    case 'img': el.src = html; el.width="800px"; el.height="auto"; el.style="max-width:100%"; break;
+    case 'img': el.src = html; el.setAttribute('width', '800px'); el.setAttribute('height', 'auto'); el.setAttribute('style', 'max-width:100%'); break;
     case 'a': if(link){el.href = link; el.innerHTML = html;} break;
     default: el.innerHTML = html;
   }
