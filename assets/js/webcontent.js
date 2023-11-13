@@ -9,7 +9,7 @@ addEventListener("DOMContentLoaded", () => {
       switch(meta[i].attributes.property.value){
         case 'og:title': title = meta[i].attributes.content.value; break;
         case 'og:description': description = meta[i].attributes.content.value; break;
-        case 'og:image': image = meta[i].content.attributes.value; break;
+        case 'og:image': image = meta[i].attributes.content.value; break;
       }
     }
     if(title){makeElement('h1', title);}
