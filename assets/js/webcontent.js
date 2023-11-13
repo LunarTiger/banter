@@ -1,9 +1,7 @@
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
     const meta = document.getElementsByTagName('meta');
-    let title = null;
-    let description = null;
-    let image = null;
+    let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null;
       let this_content = null;
