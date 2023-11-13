@@ -4,7 +4,7 @@ let image = null;
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName(meta);
+    const meta = document.getElementsByTagName('meta');
     for (let i = 0; i < meta.length; i++) {
       switch(meta[i].property){
         case 'og:title': title = meta[i].content; break;
