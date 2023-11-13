@@ -1,6 +1,6 @@
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta');
+    const meta = document.getElementsByTagName('meta'), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
@@ -11,23 +11,22 @@ addEventListener("DOMContentLoaded", () => {
         case 'og:image': image = this_content; break;
       }}
     }
-    if(title){makeElement('h1', title);}
-    if(image){makeElement('img', image);}
-    if(description){makeElement('h3', description);}
-    makeElement('a', 'open in Banter', 'banter://'+window.location.hostname+window.location.pathname);
-    makeElement('a', 'my Banter spaces', 'https://lunartiger.github.io/banter');
+    if(title){makeElement('h1', title, parent);}
+    if(image){makeElement('img', image, parent);}
+    if(description){makeElement('h3', description, parent);}
+    makeElement('a', 'open in Banter', parent, 'banter://'+window.location.hostname+window.location.pathname);
+    makeElement('a', 'my Banter spaces', parent, 'https://lunartiger.github.io/banter');
   }
 });
 
-function makeElement(type, html, link) {
-  if(type && html){
+function makeElement(type, html, parent, link) {
+  if(type && html && parent){
     let el = document.createElement(type);
     switch(type){
       case 'img': el.src = html; el.setAttribute('width', 'auto'); el.setAttribute('height', 'auto'); el.setAttribute('style', 'max-width:100%;max-height:420px;'); break;
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
       default: el.innerHTML = html;
     }
-    const parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
     else{parent.appendChild(el);}
   }
