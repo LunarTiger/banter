@@ -3,8 +3,7 @@ addEventListener("DOMContentLoaded", () => {
     const meta = document.getElementsByTagName('meta');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
-      let this_property = null;
-      let this_content = null;
+      let this_property = null, this_content = null;
       try{this_property = meta[i].attributes.property.value; this_content = meta[i].attributes.content.value;}catch{}
       finally{switch(this_property){
         case 'og:title': title = this_content; break;
@@ -28,7 +27,7 @@ function makeElement(type, html, link) {
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
       default: el.innerHTML = html;
     }
-    const parent = document.getElementById('banter-info')  ? document.getElementById('banter-info') : document.querySelector('body');
+    const parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
     else{parent.appendChild(el);}
   }
