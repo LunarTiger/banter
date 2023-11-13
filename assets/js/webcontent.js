@@ -13,7 +13,7 @@ addEventListener("DOMContentLoaded", () => {
       }
     }
     if(title){makeElement('h1', title);}
-    if(img){makeElement('img', image);}
+    if(image){makeElement('img', image);}
     if(description){makeElement('h3', description);}
     makeElement('a', 'open in Banter', 'banter://'+window.location.hostname+window.location.pathname);
     makeElement('a', 'my Banter spaces', 'https://lunartiger.github.io/banter');
