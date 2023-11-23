@@ -1,6 +1,9 @@
+// get an array of the user set properties
+const currentScript = Array.from(document.getElementsByTagName('script')).slice(-1)[0];
+
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta'), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
+    const meta = document.getElementsByTagName('meta'), my_spaces = currentScript.getAttribute("my-spaces"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
@@ -15,7 +18,7 @@ addEventListener("DOMContentLoaded", () => {
     if(image){makeElement('img', image, parent);}
     if(description){makeElement('h3', description, parent);}
     makeElement('a', 'open in Banter', parent, 'banter://'+window.location.hostname+window.location.pathname);
-    makeElement('a', 'my Banter spaces', parent, 'https://lunartiger.github.io/banter');
+    if(my_spaces){makeElement('a', 'my Banter spaces', parent, my_spaces);}
   }
 });
 
