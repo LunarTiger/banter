@@ -179,7 +179,16 @@ button {
   background-color: #000000;
   color: #00FF00;
   padding: 10px;
+  border: 2px solid #0FF;
   border-radius: 10px;
+}
+
+button:hover {
+    font-family: ComicSans;
+    background-color: #006969;
+    color: #00FF00;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 summary {
@@ -225,12 +234,13 @@ nav button {
     background-color: #000000;
     color: #00FF00;
     padding: 10px;
+    border: 2px solid #0FF;
     border-radius: 10px;
 }
 
 nav button:hover {
     font-family: ComicSans;
-    background-color: #006900;
+    background-color: #006969;
     color: #00FF00;
     padding: 10px;
     border-radius: 10px;
