@@ -181,6 +181,7 @@ button {
   padding: 10px;
   border: 2px solid #00BEBE;
   border-radius: 10px;
+  margin: 0px 2px;
 }
 
 button:hover {
