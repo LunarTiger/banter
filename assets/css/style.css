@@ -189,6 +189,11 @@ button:hover {
     color: #00FF00;
 }
 
+button:active {
+    background-color: #0FF;
+    color: #006900;
+}
+
 summary {
   font-family: ComicSans;
   color: #00ff00;
