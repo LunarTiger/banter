@@ -1,9 +1,9 @@
 // get an array of the user set properties
-const currentScript = Array.from(document.getElementsByTagName('script')).slice(-1)[0];
+const webcontent_currentScript = Array.from(document.getElementsByTagName('script')).slice(-1)[0];
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta'), my_spaces = currentScript.getAttribute("my-spaces"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
+    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
