@@ -142,6 +142,12 @@ details {
   margin-bottom:1em;
 }
 
+summary {
+  font-family: ComicSans;
+  color: #00ff00;
+  cursor: crosshair;
+}
+
 table {
   text-align:center;
   margin-left:auto;
@@ -182,6 +188,7 @@ button {
   border: 2px solid #00BEBE;
   border-radius: 10px;
   margin: 0px 2px;
+  cursor: crosshair;
 }
 
 button:hover {
@@ -192,11 +199,6 @@ button:hover {
 button:active {
     background-color: #0FF;
     color: #006900;
-}
-
-summary {
-  font-family: ComicSans;
-  color: #00ff00;
 }
 
 div.container {
