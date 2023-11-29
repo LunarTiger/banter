@@ -3,7 +3,7 @@ const webcontent_currentScript = Array.from(document.getElementsByTagName('scrip
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
+    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body'), page_title = document.querySelector('title')?true:false;
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
@@ -14,7 +14,14 @@ addEventListener("DOMContentLoaded", () => {
         case 'og:image': image = this_content; break;
       }}
     }
-    if(title){makeElement('h1', title, parent);}
+    if(title){
+      makeElement('h1', title, parent);
+      if(!page_title){
+        const page_title_el = document.createElement("title");
+        page_title_el.innerHTML = title;
+        document.querySelector('head').appendChild(page_title_el);
+      }
+    }
     if(image){makeElement('img', image, parent);}
     if(description){makeElement('h3', description, parent);}
     makeElement('a', 'open in Banter', parent, 'banter://'+window.location.hostname+window.location.pathname);
@@ -27,7 +34,7 @@ addEventListener("DOMContentLoaded", () => {
 
 function makeElement(type, html, parent, link) {
   if(type && html && parent){
-    let el = document.createElement(type);
+    const el = document.createElement(type);
     switch(type){
       case 'img': el.src = html; el.setAttribute('width', 'auto'); el.setAttribute('height', 'auto'); el.setAttribute('style', 'max-width:100%;max-height:420px;'); break;
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
