@@ -3,7 +3,7 @@ const webcontent_currentScript = Array.from(document.getElementsByTagName('scrip
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
+    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
@@ -19,6 +19,9 @@ addEventListener("DOMContentLoaded", () => {
     if(description){makeElement('h3', description, parent);}
     makeElement('a', 'open in Banter', parent, 'banter://'+window.location.hostname+window.location.pathname);
     if(my_spaces){makeElement('a', 'my Banter spaces', parent, my_spaces);}
+    if(sq_space){makeElement('a', 'SideQuest space', parent, sq_space);}
+    if(discord){makeElement('a', 'Discord server', parent, discord);}
+    makeElement('p', 'this is a space made for and viewable in <a href="https://bantervr.com">Banter</a>.', parent);
   }
 });
 
