@@ -14,13 +14,10 @@ addEventListener("DOMContentLoaded", () => {
         case 'og:image': image = this_content; break;
       }}
     }
+    if(!document.querySelector("link[rel]")){makeElement('link', true, document.querySelector('head'), 'https://lunartiger.github.io/banter/assets/css/style.css');}
     if(title){
       makeElement('h1', title, parent);
-      if(!document.querySelector('title')){
-        const page_title_el = document.createElement("title");
-        page_title_el.innerHTML = title;
-        document.querySelector('head').appendChild(page_title_el);
-      }
+      if(!document.querySelector('title')){makeElement('title', title, document.querySelector('head'));}
     }
     if(image){makeElement('img', image, parent);}
     if(description){makeElement('h3', description, parent);}
@@ -38,6 +35,7 @@ function makeElement(type, html, parent, link) {
     switch(type){
       case 'img': el.src = html; el.setAttribute('width', 'auto'); el.setAttribute('height', 'auto'); el.setAttribute('style', 'max-width:100%;max-height:420px;'); break;
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
+      case 'link' : if(link){el.href = link; el.rel = "stylesheet"; el.type = "text/css";} break;
       default: el.innerHTML = html;
     }
     if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
