@@ -3,7 +3,7 @@ const webcontent_currentScript = Array.from(document.getElementsByTagName('scrip
 
 addEventListener("DOMContentLoaded", () => {
   if(!window.isBanter){
-    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body'), page_title = document.querySelector('title')?true:false;
+    const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
       let this_property = null, this_content = null;
@@ -16,7 +16,7 @@ addEventListener("DOMContentLoaded", () => {
     }
     if(title){
       makeElement('h1', title, parent);
-      if(!page_title){
+      if(!document.querySelector('title')){
         const page_title_el = document.createElement("title");
         page_title_el.innerHTML = title;
         document.querySelector('head').appendChild(page_title_el);
