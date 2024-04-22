@@ -7,7 +7,20 @@
     <meta name="theme-color" content="#696969">
     <link href="https://lunartiger.github.io/banter/assets/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="/banter/assets/js/webcontent.js" my-spaces="/banter"></script>
+    <script>
+      addEventListener("DOMContentLoaded", async() => {
+        const redirectURL = 'story-time-old.bant.ing';
+        if(window.isBanter){
+          window.loadDoneCallback = async() => {
+            lockPlayer();
+            openPage('banter://'+redirectURL);
+          }
+        }else{
+          window.location.replace('https://'+redirectURL);
+        }
+      });
+    </script>
+    <!--<script src="/banter/assets/js/webcontent.js" my-spaces="/banter"></script>
     <script src="https://sq-community.glitch.me/gotoButton.js" position="-8.25 1 -10" rotation="0 90 0" scale="0.5" button-color="#b38a4b" text-color="#000"></script>
     <script>
       let locked=false;
@@ -24,14 +37,14 @@
           })
         }
       });
-    </script>
+    </script>-->
   </head>
   <body>
-    <div style="display: none;" id="aScene"><a-scene sq-disableteleport sq-spawnpoint="position: 5 0 -25 201;" sq-maxoccupancy="number: 25" sq-clippingplane="near: 0.09; far: 1666;" sq-guestsallowed="false" sq-friendpositionjoinallowed="false" sq-devtoolsenabled="false" sq-portalsenabled="false" sq-refreshrate="rate:90" sq-hidedefaulttextures sq-assetbundle="android: https://lunartiger.github.io/banter/story-time-old/assets/unity/storytime_android; desktop: https://lunartiger.github.io/banter/story-time-old/assets/unity/storytime_standalonewindows;" embedded>
+    <div style="display: none;" id="aScene"><a-scene embedded><!--<a-scene sq-disableteleport sq-spawnpoint="position: 5 0 -25 201;" sq-maxoccupancy="number: 25" sq-clippingplane="near: 0.09; far: 1666;" sq-guestsallowed="false" sq-friendpositionjoinallowed="false" sq-devtoolsenabled="false" sq-portalsenabled="false" sq-refreshrate="rate:90" sq-hidedefaulttextures sq-assetbundle="android: https://lunartiger.github.io/banter/story-time-old/assets/unity/storytime_android; desktop: https://lunartiger.github.io/banter/story-time-old/assets/unity/storytime_standalonewindows;" embedded>
       <a-box sq-collider sq-interactable lock-unlock color="#000" position="-6.08 6.14 -11.89" scale="0.3 0.3 0" material="transparent: true; opacity: 0"></a-box>
       <a-box color="#b38a4b" position="-8.25 1 4" rotation="0 90 0" depth="0.05" width="1.69" height="0.5" scale="0.69 0.69 0.69">
         <a-text value="Discord Server:\nsdq.st/st-discord" position="0 0 0.03" color="#000" align="center"></a-text>
-      </a-box>
+      </a-box>-->
     </a-scene></div>
   </body>
 </html>
