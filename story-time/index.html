@@ -10,15 +10,13 @@
     <script src="/banter/assets/js/webcontent.js" my-spaces="/banter" sq-space="https://sdq.st/story-time" discord="https://discord.gg/DbQF7ze"></script>
     <script>
       addEventListener("DOMContentLoaded", async() => {
-        const redirectURL = 'https://sidequestvr.github.io/SideQuest.Banter.Spaces/story-thyme/';
+        const redirectURL = 'sidequestvr.github.io/SideQuest.Banter.Spaces/story-thyme/';
         if(window.isBanter){
           window.loadDoneCallback = async() => {
             lockPlayer();
             openPage('banter://'+redirectURL);
           }
-        }else{
-          window.location.replace('https://'+redirectURL);
-        }
+        }else{window.location.replace('https://'+redirectURL);}
       });
     </script>
   </head>
