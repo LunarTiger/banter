@@ -1,0 +1,407 @@
+@font-face {
+    font-family: Lexend;
+    src: url("https://lunartiger.github.io/assets/fonts/lexend/Lexend.ttf");
+}
+
+@font-face {
+    font-family: ComicSans;
+    src: url("https://lunartiger.github.io/assets/fonts/lexend/Lexend.ttf");
+}
+
+html {
+  background-color: #000;
+  margin: 0;
+}
+
+body {
+  font-family: ComicSans;
+  font-size: 30px;
+  text-align:center;
+  color: #b3ef56;
+  background-color: #000;
+  margin: 0;
+}
+
+footer{
+    font-family: ComicSans;
+    font-size: 30px;
+    z-index:-1;
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background-color:#000000;
+    color:#00ff00;
+    border:0px;
+    margin: 0;
+}
+
+/* unvisited link */
+a:link {
+  font-family: ComicSans;
+  color: #0ac139;
+  text-decoration: underline;
+}
+
+/* visited link */
+a:visited {
+  font-family: ComicSans;
+  color: #0ac139;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  font-family: ComicSans;
+  color: #0ac139;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  font-family: ComicSans;
+  color: #0ac139;
+  text-decoration: underline;
+}
+
+a {
+  font-family: ComicSans;
+  color: #0ac139;
+  text-decoration: underline;
+}
+
+p {
+  font-size: 30px;
+}
+
+pre {
+  font-size:30px;
+  width:90%;
+  background-color: #020;
+  text-align: left;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+h1 {
+  font-size: 80px;
+  font-family: ComicSans;
+  color: #00ffff;
+}
+
+h2 {
+  font-size: 70px;
+  font-family: ComicSans;
+  color: #00ff00;
+}
+
+h3 {
+  font-size: 60px;
+  font-family: ComicSans;
+  color: #00be00;
+}
+
+h4 {
+  font-size: 50px;
+  font-family: ComicSans;
+  color: #00bebe;
+}
+
+h5 {
+  font-size: 40px;
+  font-family: ComicSans;
+  color: #006969;
+}
+
+h6 {
+  font-size: 30px;
+  font-family: ComicSans;
+  color: #00ff00;
+}
+
+hr { 
+  border-top: 5px dashed #006900;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  border-width: 1px;
+}
+
+img {
+    border-radius:10px;
+}
+
+details {
+  font-family:ComicSans;
+  margin-bottom:1em;
+}
+
+summary {
+  font-family: ComicSans;
+  color: #00ff00;
+  cursor: crosshair;
+}
+
+table {
+  font-size: 30px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:1em;
+  border: none;
+  max-width: 99%;
+}
+
+table, th, td {
+  border: 1px dashed #006900;
+  border-collapse: collapse;
+}
+
+table.navbar {
+  cellspacing: 10;
+}
+
+tr {
+  border: none;
+}
+
+th {
+  text-align:center;
+  border: none;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+button {
+  font-size: 33px;
+  font-family: ComicSans;
+  background-color: #000000;
+  color: #00BE00;
+  padding: 10px;
+  border: 2px solid #00BEBE;
+  border-radius: 10px;
+  margin: 0px 2px;
+  cursor: crosshair;
+}
+
+button:hover {
+    background-color: #006969;
+    color: #00FF00;
+}
+
+button:active {
+    background-color: #0FF;
+    color: #006900;
+}
+
+div.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+div.foot {
+    max-width: 95%;
+    max-height: 100%;
+    margin: 0 auto;
+}
+
+section {
+    border: none;
+}
+
+/* navbar */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+nav ul li  {
+    border-right: 5px dashed #006900;
+    display: inline-block;
+}
+
+nav ul li:last-child {
+    border-right:none;
+}
+
+nav ul li a {
+    font-family: ComicSans;
+    display: block;
+    color: #00be00;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* unvisited link */
+nav ul li a:link {
+    font-family: ComicSans;
+    display: block;
+    color: #00be00;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* visited link */
+nav ul li a:visited {
+    font-family: ComicSans;
+    display: block;
+    color: #00be00;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+nav ul li a:hover {
+    font-family: ComicSans;
+    color: #00FF00;
+    background-color: #003300;
+    text-decoration: none;
+}
+
+/********coustom scrollbar********/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0f0; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #009900; 
+}
+
+/*corner where the scrollbars meet*/
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/*********** collapsible layout ***********/
+/**Fake**/
+.fakecollapsible{
+    background-color: #009000;
+    color: white;
+    cursor: default;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    content: '\002B';
+    font-size: 15px;
+}
+
+.fakecollapsible:after {
+    content: '\2212';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.fakeinnertext {
+    padding: 0 18px;
+    height:auto;
+    max-height: auto;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #020;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+/****/
+.collapsible {
+    background-color: #006900;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #009000;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.innertext {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #020;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+
+.innertext p {
+    margin: 20px 0 20px
+}
+
+.encase {
+    border-width: 0;
+    width: 90%;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/*------------------------------------*/
+
+.holder {
+    padding: 0 18px;
+    height: auto;
+    overflow: hidden;
+    background-color: #020;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+
+.holder p {
+    margin: 20px 0 20px
+}
+
+.center {
+    text-align: center;
+}
