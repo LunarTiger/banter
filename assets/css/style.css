@@ -203,22 +203,28 @@ button:active {
     color: #006900;
 }
 
-form button.person {
+form button {
     font-family: ComicSans;
-    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
     background-color: #000000;
     color: #00FF00;
     padding: 10px;
     border-radius: 10px;
 }
 
-form button.person:hover {
+form button:hover {
     font-family: ComicSans;
-    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
     background-color: #006969;
     color: #00FF00;
     padding: 10px;
     border-radius: 10px;
+}
+
+.person {
+    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
+}
+
+.person:hover {
+    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
 }
 
 div.container {
