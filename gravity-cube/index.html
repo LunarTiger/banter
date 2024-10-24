@@ -27,21 +27,24 @@
       <!-- main area -->
       <a-entity id="cube" position="0 0 0" rotation="0 0 0">
         <!-- floor -->
-        <a-box sq-collider sq-interactable negy rotation="0 0 0" scale="40 0.1 40" color="#696969" src="#cube_texture" repeat="5 2.5"></a-box>
+        <a-box sq-collider sq-interactable negy rotation="0 0 0" scale="40 0.1 40" color="#696969" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5"></a-box>
+        <a-box sq-collider position="0 -0.01 0" rotation="0 0 0" scale="40 0.1 40" color="#696969" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5"></a-box>
+
         <!-- ceiling -->
-        <a-box sq-collider sq-interactable posy position="0 40 0" rotation="0 0 0" scale="40 0.1 40" color="#696969" src="#cube_texture" repeat="5 2.5"></a-box>
+        <a-box sq-collider sq-interactable posy position="0 40 0" rotation="0 0 0" scale="40 0.1 40" color="#696969" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5"></a-box>
+        <a-box sq-collider position="0 40.1 0" rotation="0 0 0" scale="40 0.1 40" color="#696969" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5"></a-box>
         
         <!-- The wall sections -->
-        <a-box sq-collider sq-interactable position="20.01 20.01 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
-        <a-box sq-collider sq-interactable position="-20.01 20.01 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
-        <a-box sq-collider sq-interactable position="0 20.01 20.01" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969" ></a-box>
-        <a-box sq-collider sq-interactable position="0 20.01 -20.01" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider posx sq-interactable position="20 20 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider negx sq-interactable position="-20 20 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider negz sq-interactable position="0 20 20" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969" ></a-box>
+        <a-box sq-collider posz sq-interactable position="0 20 -20" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
 
         <!-- The wall click sections -->
-        <a-box sq-collider posx position="20 20 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
-        <a-box sq-collider negx position="-20 20 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
-        <a-box sq-collider negz position="0 20 20" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969" ></a-box>
-        <a-box sq-collider posz position="0 20 -20" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider position="20.01 20.01 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider position="-20.01 20.01 0" rotation="0 90 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
+        <a-box sq-collider position="0 20.01 20.01" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969" ></a-box>
+        <a-box sq-collider position="0 20.01 -20.01" rotation="0 0 0" scale="40 40 0.2" src="/banter/gravity-cube/img/granite.jpg" repeat="5 2.5" color="#696969"></a-box>
         
         <!-- portals to spaces -->
       <a-box sq-collider sq-interactable portal-toggle id="portal-toggle" color="#002100" position="-19.9 1.42 19" rotation="0 90 0" depth="0.05" width="0.69" height="0.6">
