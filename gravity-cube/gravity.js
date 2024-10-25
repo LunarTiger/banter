@@ -3,7 +3,7 @@ var previousGrav = null;
 AFRAME.registerComponent('negy', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "negy"){
+      if(previousGrav == "negy"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
@@ -17,7 +17,7 @@ AFRAME.registerComponent('negy', {
 AFRAME.registerComponent('posy', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "posy"){
+      if(previousGrav == "posy"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
@@ -31,7 +31,7 @@ AFRAME.registerComponent('posy', {
 AFRAME.registerComponent('posx', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "posx"){
+      if(previousGrav == "posx"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
@@ -45,7 +45,7 @@ AFRAME.registerComponent('posx', {
 AFRAME.registerComponent('negx', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "negx"){
+      if(previousGrav == "negx"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
@@ -59,7 +59,7 @@ AFRAME.registerComponent('negx', {
 AFRAME.registerComponent('posz', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "posz"){
+      if(previousGrav == "posz"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
@@ -73,7 +73,7 @@ AFRAME.registerComponent('posz', {
 AFRAME.registerComponent('negz', {
   init: function () {
     this.el.addEventListener('click', () => {
-      if(previousGrav = "negz"){
+      if(previousGrav == "negz"){
         gravity({x: 0, y: 0, z: 0});
         previousGrav = null;
       }else{
