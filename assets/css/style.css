@@ -439,5 +439,3 @@ nav ul li a:hover {
 .center {
     text-align: center;
 }
-
-@media print, screen and (max-width: 960px){body footer table{font-size: 5px;}}
