@@ -8,6 +8,8 @@
     src: url("https://lunartiger.github.io/assets/fonts/comic_sans/comic.ttf");
 }
 
+@media print, screen and (max-width: 960px){body footer table{font-size: 20px;}}
+
 html {
   background-color: #000;
   margin: 0;
