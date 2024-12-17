@@ -14,7 +14,7 @@ addEventListener("DOMContentLoaded", () => {
         case 'og:image': image = this_content; break;
       }}
     }
-    if(!document.querySelector('link[rel="stylesheet"]')){makeElement('link', true, document.querySelector('head'), 'https://lunartiger.github.io/banter/assets/css/style.css');}
+    if(!document.querySelector('link[rel="stylesheet"]')){makeElement('link', true, document.querySelector('head'), 'https://rev.lunar.gay/banter/assets/css/style.css');}
     if(title){
       makeElement('h1', title, parent);
       if(!document.querySelector('title')){makeElement('title', title, document.querySelector('head'));}

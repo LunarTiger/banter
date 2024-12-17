@@ -1,6 +1,6 @@
 if(window.isBanter){
   [
-    {name: 'portal-toggle', url: 'https://lunartiger.github.io/banter/my_spaces.json'}
+    {name: 'portal-toggle', url: 'https://rev.lunar.gay/banter/my_spaces.json'}
   ].forEach(d => {
     AFRAME.registerComponent(d.name, {
       init: async function () {

@@ -1,11 +1,11 @@
 @font-face {
     font-family: Lexend;
-    src: url("https://lunartiger.github.io/assets/fonts/lexend/Lexend.ttf");
+    src: url("https://rev.lunar.gay/assets/fonts/lexend/Lexend.ttf");
 }
 
 @font-face {
     font-family: ComicSans;
-    src: url("https://lunartiger.github.io/assets/fonts/lexend/Lexend.ttf");
+    src: url("https://rev.lunar.gay/assets/fonts/lexend/Lexend.ttf");
 }
 
 html {
@@ -220,11 +220,11 @@ form button:hover {
 }
 
 .person {
-    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
+    cursor: url("https://rev.lunar.gay/assets/cursors/gay_person.cur"), crosshair;
 }
 
 .person:hover {
-    cursor: url("https://lunartiger.github.io/assets/cursors/gay_person.cur"), crosshair;
+    cursor: url("https://rev.lunar.gay/assets/cursors/gay_person.cur"), crosshair;
 }
 
 div.container {
