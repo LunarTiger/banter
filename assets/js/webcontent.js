@@ -2,7 +2,7 @@
 const webcontent_currentScript = Array.from(document.getElementsByTagName('script')).slice(-1)[0];
 
 addEventListener("DOMContentLoaded", () => {
-  if(!window.isBanter){
+  if(true){
     const meta = document.getElementsByTagName('meta'), my_spaces = webcontent_currentScript.getAttribute("my-spaces"), sq_space = webcontent_currentScript.getAttribute("sq-space"), discord = webcontent_currentScript.getAttribute("discord"), parent = document.getElementById('banter-info') ? document.getElementById('banter-info') : document.querySelector('body');
     let title = null, description = null, image = null;
     for (let i = 0; i < meta.length; i++) {
