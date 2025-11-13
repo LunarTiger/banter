@@ -1,0 +1,500 @@
+<html lang="en">
+  <head>
+    <meta property="og:title" content="Rev. Lunar's Test Space">
+    <meta property="og:description" content="Just a place for me to mess around and test stuff.">
+    <meta property="og:image" content="https://lunartiger.github.io/assets/img/dick.png">
+    <meta property="og:url" content="https://rev.lunar.gay/banter/test/">
+    <meta property="og:locale" content="en">
+    <meta name="theme-color" content="#006900">
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="https://lunartiger.github.io/favicon.ico">
+    <link href="https://rev.lunar.gay/banter/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://rev.lunar.gay/banter/assets/js/webcontent.js" my-spaces="https://rev.lunar.gay/banter" sq-space="https://sidequestvr.com/space/1369"></script>
+    <!--<script>
+      // window.playlistId = 'PLcWVB9qU2Pt_ylnwWOBJr_YyKcrPq-1Hb';
+      // window.playlistId = 'PLJAqjOYAEgb6DqPC-Pxd-0gjsWgXo6voe'; // toki pona music
+      window.playlistId = 'PLJAqjOYAEgb5_qkDOY7V9nvcOSntp-HoM'; // my music playlist
+      window.instanceId = 'lunar-test';
+    </script>-->
+    <script src="./parametric-geometery.js"></script>
+    <script src="./climb-boxes.js"></script>
+    <script src="./gravity.js"></script>
+    <script src="./random-spawner.js"></script>
+    <script src="./click-respawner.js"></script>
+    <script src="https://rev.lunar.gay/althub/gotoButton.js" position="0 1.5 -9.42" scale="0.69"></script>
+    <script>
+      // A simple aframe component to handle the click to open the video player
+      /*AFRAME.registerComponent('video-click', {
+        init: function () {
+          // When you click on an element, run the animation on the parent element
+          this.el.addEventListener('click', () => {
+            openPage("https://sq-synced-videoplayer.glitch.me/playlist.html?instanceId=" + window.instanceId + ( window.playlistId ? "&playlistId=" + window.playlistId : "") + "&user=" + window.user.id +"-_-"+window.user.name);
+          })
+        }
+      });*/
+      /* Handle the raycasting (this no longer works)
+      AFRAME.registerComponent('change-box-colour', {
+        init: function() {
+          this.el.addEventListener('intersect', ()=>{
+            //console.log("intersect");
+            this.el.setAttribute('color', '#0ff');
+          }); 
+          this.el.addEventListener('intersect-exit', ()=>{
+            //console.log("intersect-exit");
+            this.el.setAttribute('color', '#696969');
+          });
+        }
+      });/**/
+      //handle ball respawning
+      AFRAME.registerComponent('respawner', {
+        init: function() {
+          this.el.addEventListener('trigger-enter', ()=>{
+            //if the player enters the trigger, respawn it
+            console.log(this.el.object3D.userData);
+            if(this.el.object3D.userData.isLocalPlayer){
+              //console.log(this.el.object3D.userData.isLocalPlayer);
+              const y = 0.5;
+              const max_size = 6.5;
+              let x = Math.random()*max_size;
+              let z = Math.random()*max_size;
+              if(Math.round(Math.random())){x = -x;}
+              if(Math.round(Math.random())){z = -z;}
+              movePlayer({x: x, y: y, z: z});
+            }
+            //if a ball enters the trigger, respawn it
+            if(this.el.object3D.userData.other){
+              //console.log(this.el.object3D.userData);
+              if(this.el.object3D.userData.other.id == 'cyan_ball'){
+                if(this.el.object3D.userData.other.object3D.id) {addForce({x: 0, y: 0, z: 0}, 'force', this.el.object3D.userData.other.object3D.id); moveRotation({x: 0, y: 0, z: 0}, this.el.object3D.userData.other.object3D.id); movePosition({x: 8.5, y: 0.1, z: 2}, this.el.object3D.userData.other.object3D.id);}
+              }else if(this.el.object3D.userData.other.id == 'rainbow_ball'){
+                if(this.el.object3D.userData.other.object3D.id) {addForce({x: 0, y: 0, z: 0}, 'force', this.el.object3D.userData.other.object3D.id); moveRotation({x: 0, y: 0, z: 0}, this.el.object3D.userData.other.object3D.id); movePosition({x: 8.5, y: 0.1, z: 0}, this.el.object3D.userData.other.object3D.id);}
+              }else if(this.el.object3D.userData.other.id == 'trans_ball'){
+                if(this.el.object3D.userData.other.object3D.id) {addForce({x: 0, y: 0, z: 0}, 'force', this.el.object3D.userData.other.object3D.id); moveRotation({x: 0, y: 0, z: 0}, this.el.object3D.userData.other.object3D.id); movePosition({x: 8.5, y: 0.1, z: 1}, this.el.object3D.userData.other.object3D.id);}
+              }
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div style="display: none;" id="aScene"><a-scene sq-disableteleport sq-spawnpoint="position: 0 0 0 0;" sq-maxoccupancy="number: 42" sq-clippingplane="near: 0.09; far: 666;" sq-guestsallowed="enabled: false" sq-portalsenabled="enabled: true" sq-devtoolsenabled="enabled: false"  sq-friendpositionjoinallowed="enabled: false" embedded>
+      
+      
+      <!-- video player -->
+      <script src="https://vidya.sdq.st/playlist.js" playlist="PLJAqjOYAEgb6zbi-c8OYBbQPZaXn53LuJ" spatial="false" announce="true" hand-controls="true" instance="lunar-test" position="27 8 0" rotation="20 270 0" scale="20 20 20" volume="10" button-position="20 0.2 0" button-rotation="-60 270 0" button-scale="1 1 1"></script>
+      
+      <!-- A camera to play with in aframe, banter ignores it. -->
+      <a-entity id="cameraMan" camera look-controls rotation="0 90 90" wasd-controls="fly: true" position="0 2 2"></a-entity>
+
+      <!-- Some background boneworks ambiance --
+      <a-sound id="bonebackSound" position="0 80 0" autoplay="true" loop="true"  volume="0.05" src="https://cdn.glitch.global/376b5e69-e989-4420-887c-8925a3e39012/boneback.mp3"></a-sound>
+
+      <!-- skybox -->
+      <a-entity id="streetViewObject" scale="10 10 10" rotation="0 30 0" position="0 -5 0" sq-streetview="panoId: 6RYDeomKfCYv4rX2J86vCA"  ></a-entity>
+
+      <!-- Assets -->
+      <a-assets>
+        <a-asset id="concrete" src="https://i.imgur.com/miUNEb6.jpg"></a-asset>
+        <a-asset id="bar" src="https://i.imgur.com/x4NX4T4.jpg"></a-asset>
+        <a-asset id="metalGrid" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/images.jpeg"></a-asset>
+        <a-asset id="metalGreyGrid" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/galv.jpg"></a-asset>
+        <a-asset id="meshF" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/pngegg.png"></a-asset>
+        <a-mixin id="climbingBar" scale="0.025 1.5 0.025" rotation="90 0 0"></a-mixin>
+        <a-mixin id="slideStep" rotation="0 0 -50" scale="0.3 0.06 0.75"></a-mixin>
+        <a-mixin id="slideUprightBar" rotation="0 0 -50" scale="0.02 1 0.019"></a-mixin>
+        <a-asset id="seatWood" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/chrome_JtbAJ5eIT0.png"></a-asset>
+        <a-asset id="ball" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/Granite%20None%202000%20x%201485%20mm.jpg"></a-asset>
+        <a-asset id="floor" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/Granite%20None%202000%20x%201485%20mm.jpg"></a-asset>
+        <a-asset id="galv" src="https://cdn.glitch.global/8a3dc90d-d1a6-4e98-bf1f-55efd8de9f91/galv.jpg"></a-asset>
+        <a-asset id="brick" src="https://cdn.glitch.global/6136ee77-dc6e-41f2-96e2-012840f2dd99/brick.jpg"></a-asset>
+        <a-asset id="brickJoin" src="https://cdn.glitch.global/376b5e69-e989-4420-887c-8925a3e39012/Beige-Brick%2C-Stretcher-Architextures.jpg"></a-asset>
+        <a-asset id="threed" src="https://cdn.glitch.global/dcf3fbe4-5681-4d94-b2cb-41b3e5992815/astronaut.jpg?v=1689253747632"></a-asset>
+        <!--<a-asset id="ceers-sky" src="https://cdn.glitch.me/dcf3fbe4-5681-4d94-b2cb-41b3e5992815/ceers-map.png?v=1689912456217"></a-asset>-->
+        <a-asset id="rainbow_strip" src="https://cdn.glitch.global/dcf3fbe4-5681-4d94-b2cb-41b3e5992815/rainbow_strip.jpg?v=1690664942063"></a-asset>
+        <a-asset id="trans_strip" src="https://cdn.glitch.global/dcf3fbe4-5681-4d94-b2cb-41b3e5992815/trans_strip.jpg?v=1690664942269"></a-asset>
+      </a-assets>
+      
+      
+      
+      
+      <!-- add a box to the wrists -->
+      <a-box sq-lefthand rotation="0 -90 180" position="0.005 0 0.055 -0.038" scale="0.05 0.05 0.05"></a-box>
+      <a-box sq-righthand rotation="0 -90 180" position="0.005 0 0.055 -0.038" scale="0.05 0.05 0.05"></a-box>
+      
+      
+      
+      
+      <!-- main park area -->
+      <a-entity id="park" position="0 0 0" rotation="0 0 0">
+        
+        <!-- The floor -->
+        <a-box sq-collider rotation="0 0 0" scale="40 0.1 40" color="#006900" src="#floor" repeat="5 2.5"></a-box>
+        
+        <!-- A box to click to open my contact page -->
+        <a-box sq-collider sq-interactable sq-clickurl="url:https://lunar.bant.ing" color="#002100" position="-9.4 1 3" rotation="0 90 0" depth="0.05" width="1.69" height="0.4">
+          <a-text value="l.bant.ing" position="0 0 0.03" color="#0ff" align="center"></a-text>
+        </a-box>
+        
+        <!-- click the button to respawn ball -->
+        <a-sphere sq-collider sq-grabbable id="Ball1" position="0 -10000 0" scale="0.15 0.15 0.15" sq-rigidbody="mass: 0.3; useGravity: true;" color="#006969" side="front"></a-sphere>
+        <a-box sq-collider sq-interactable button-that-is-clicked color="#002100" position="-9.4 1 -3" rotation="0 90 0" depth="0.05" width="1.69" height="0.4">
+          <a-text value="click for ball" position="0 0 0.03" color="#0ff" align="center"></a-text>
+        </a-box>
+        
+        <!-- A mirror! -->
+        <a-entity sq-mirror id="mirror0" position="0 1.8 20" rotation="0 180 0" scale="5 5 5"></a-entity>
+        <!--<a-entity sq-mirror id="mirror1" position="0 1.8 20" rotation="0 0 0" scale="5 5 5"></a-entity>
+        
+        <!-- climbing frame with non convex example --
+        <a-entity id="frameGroup" position="-6.00932 1.31211 2.42841" rotation="0 114.42368239219131 0">
+          <a-torus sq-climbable sq-nonconvexcollider material="color: #ffffff" geometry="radiusTubular: 0.015" scale="5.34079 3.79239 4.63798" src="#galv" repeat="15 1"></a-torus>
+          <a-cylinder sq-climbable position="5.18 0 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="5.05 0.79 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="4.71 1.49 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="4.26 2.05 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="3.57 2.63178 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="2.75041 3.08641 -0.00544" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="1.8 3.41184 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="0.73 3.60505 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-0.36 3.63121 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-1.24 3.52795 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-2.12 3.33085 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-2.99 2.97054 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-3.86126 2.375 -0.00299" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-4.63 1.59366 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-5.06 0.72716 0" mixin="climbingBar" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-5.14 0 0" mixin="climbingBar" src="#galv"></a-cylinder>
+        </a-entity>
+        
+        <!-- A lovely slide! -->
+        <a-entity position="-7 1.1899 -8" rotation="0 0 50">
+          
+          <!-- A smooth invisible plane to make walking eaisier -->
+          <a-box sq-collider position="-0.0539 0.1226 0" rotation="" scale="2.85408 0.05 0.75176" color="grey" material="; transparent: true; opacity: 0" geometry=""></a-box>
+          
+          <!-- All the steps in the stairs of the slide -->
+          <a-box sq-climbable position="1.1 0 0"  mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="1.46 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="0.75 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="0.4 0 0"  mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="0.05 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="-0.3 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="-0.65 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="-1 0 0" mixin="slideStep" color="grey"></a-box>
+          <a-box sq-climbable position="-1.35 0 0" mixin="slideStep" color="grey"></a-box>
+          
+          <!-- The bottom metal rail on the sides of the steps -->
+          <a-box sq-climbable position="0 0 -0.4" rotation="" scale="3.2 0.05 0.05" color="grey"></a-box>
+          <a-box sq-climbable position="0 0 0.4"  rotation="" scale="3.2 0.05 0.05" color="grey"></a-box>
+          
+          <!-- The hand rail for the side of the steps -->
+          <a-box sq-climbable position="0.80195 0.67293 -0.4" rotation="" scale="3.2 0.02 0.02" color="grey"></a-box>
+          <a-box sq-climbable position="0.80195 0.67293 0.4" rotation="" scale="3.2 0.02 0.02" color="grey"></a-box>
+          
+          <!-- The upright bars connecting the hand rail and the bottom rail on the side of the steps. -->
+          <a-box sq-climbable position="-1.13 0.35 -0.4" mixin="slideUprightBar" color="grey"></a-box>
+          <a-box sq-climbable position="-1.13 0.35 0.4" mixin="slideUprightBar" color="grey"></a-box>
+          <a-box sq-climbable position="1.95 0.35 -0.4" mixin="slideUprightBar" color="grey"></a-box>
+          <a-box sq-climbable position="1.95 0.35 0.4" mixin="slideUprightBar" color="grey"></a-box>
+          
+          <!-- The actual slide surface -->
+          <a-box sq-climbable sq-slippery="friction: 0" position="1.955 -2.4 0" rotation="0 0 100.17594090067313" scale="4.70337 0.05 0.75176" color="#cbbebe"></a-box>
+          <a-box sq-climbable sq-slippery="friction: 0" position="2 -2.5 -0.4" rotation="0 0 100" scale="5 0.3 0.05" color="#cbbebe"></a-box>
+          <a-box sq-climbable sq-slippery="friction: 0" position="2 -2.5 0.4" rotation="0 0 100" scale="5 0.3 0.05" color="#cbbebe"></a-box>
+        </a-entity>
+        
+        <!-- A nice bench. -->
+        <a-entity id="nice_bench" rotation="-179.9998479605043 -90 -179.9998479605043" position="8.73003 -0.00001 -5.07169" >
+          <a-box sq-climbable rotation="0 90 0" position="0.65 0.05 0" scale="0.8 0.1 0.1"  src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 90 0" position="-0.65 0.05 0" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="0 0 90" position="0.65 0.25 0" scale="0.3 0.1 0.1"   src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 0 90" position="-0.65 0.25 0" scale="0.3 0.1 0.1"  src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="5.515 0 90" position="-0.45 0.90485 0.5" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="5.515 0 90" position="0.45 0.90485 0.48861" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="0 90 0" position="0.45 0.55 0.05" scale="0.9 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 90 0" position="-0.45 0.55 0.05" scale="0.9 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>     
+          <a-box sq-climbable position="0 0.45044 0" scale="1.6 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>   
+          <a-box sq-climbable position="0 0.62547 -0.26294" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>  
+          <a-box sq-climbable position="0 0.62547 0.10356" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+          <a-box sq-climbable rotation="-85.84366 0 0" position="0 0.80572 0.40302" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+          <a-box sq-climbable rotation="-85.844 0 0" position="0 1.17 0.437" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+         </a-entity>
+        
+        <!-- Another nice bench. -->
+        <a-entity rotation="-179.9998479605043 -90 -179.9998479605043" position="8.73003 -0.00001 3.17466" >
+          <a-box sq-climbable rotation="0 90 0" position="0.65 0.05 0" scale="0.8 0.1 0.1"  src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 90 0" position="-0.65 0.05 0" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="0 0 90" position="0.65 0.25 0" scale="0.3 0.1 0.1"   src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 0 90" position="-0.65 0.25 0" scale="0.3 0.1 0.1"  src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="5.515 0 90" position="-0.45 0.90485 0.5" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="5.515 0 90" position="0.45 0.90485 0.48861" scale="0.8 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box> 
+          <a-box sq-climbable rotation="0 90 0" position="0.45 0.55 0.05" scale="0.9 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>
+          <a-box sq-climbable rotation="0 90 0" position="-0.45 0.55 0.05" scale="0.9 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>     
+          <a-box sq-climbable position="0 0.45044 0" scale="1.6 0.1 0.1" src="#metalGrid" repeat="2.5 0.5"></a-box>   
+          <a-box sq-climbable position="0 0.62547 -0.26294" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>  
+          <a-box sq-climbable position="0 0.62547 0.10356" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+          <a-box sq-climbable rotation="-85.84366 0 0" position="0 0.80572 0.40302" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+          <a-box sq-climbable rotation="-85.844 0 0" position="0 1.17 0.437" scale="1.7 0.049 0.29462" src="#seatWood" repeat="1 1"></a-box>   
+         </a-entity>
+        
+        <!-- Basketball hoop -->
+        <a-entity position="4 0 -9" >
+          <a-cylinder sq-collider position="0 1.25 -0" scale="0.04 2.5 0.04" src="#metalGreyGrid" color="grey" repeat="1 10"></a-cylinder>
+          <a-cylinder sq-collider rotation="49.75622788695582 0 0" position="0 2.79529 0.37346" scale="0.04 1 0.04" src="#metalGreyGrid" color="grey" repeat="1 10"></a-cylinder>
+          <a-torus sq-climbable sq-nonconvexcollider position="0 2.8 1.04993" geometry="radiusTubular: 0.025" scale="0.235 0.235 0.235" rotation="90 0 90.00021045914971" src="#metalGreyGrid" color="grey" repeat="1 10"></a-torus>
+          <a-box sq-collider position="0 3.10076 0.7596" rotation="90 0 0" scale="1.82581 0.05 1.05723" ></a-box>
+          <a-image sq-collider rotation="0 180 0" position="0 3.10076 0.78834" scale="1.82 1.05678 1.21" src="https://cdn.glitch.global/6136ee77-dc6e-41f2-96e2-012840f2dd99/bbbacking.jpg" ></a-image>
+        </a-entity>
+        
+        <!-- Basketball hoop -->
+        <a-entity position="4 0 9" rotation="0 180 0">
+          <a-cylinder sq-collider position="0 1.25 -0" scale="0.04 2.5 0.04" src="#metalGreyGrid" color="grey" repeat="1 10"></a-cylinder>
+          <a-cylinder sq-collider rotation="49.75622788695582 0 0" position="0 2.79529 0.37346" scale="0.04 1 0.04" src="#metalGreyGrid" color="grey" repeat="1 10"></a-cylinder>
+          <a-torus sq-climbable sq-nonconvexcollider position="0 2.8 1.04993" geometry="radiusTubular: 0.025" scale="0.235 0.235 0.235" rotation="90 0 90.00021045914971" src="#metalGreyGrid" color="grey" repeat="1 10"></a-torus>
+          <a-box sq-collider position="0 3.10076 0.7596" rotation="90 0 0" scale="1.82581 0.05 1.05723" ></a-box>
+          <a-image sq-collider rotation="0 180 0" position="0 3.10076 0.78834" scale="1.82 1.05678 1.21" src="https://cdn.glitch.global/6136ee77-dc6e-41f2-96e2-012840f2dd99/bbbacking.jpg" ></a-image>
+        </a-entity>
+        
+        <!-- balls -->
+        <a-sphere sq-collider sq-grabbable id="cyan_ball" position="8.5 0.1 2" scale="0.15 0.15 0.15" sq-rigidbody="mass: 0.3; useGravity: true;" src="#ball" repeat="20 30" color="#0ff" side="front"></a-sphere>
+        <a-sphere sq-collider sq-grabbable id="trans_ball" position="8.5 0.1 1" scale="0.15 0.15 0.15" sq-rigidbody="mass: 0.3; useGravity: true;" src="#trans_strip" repeat="1 1" color="#fff" side="front"></a-sphere>
+        <a-sphere sq-collider sq-grabbable id="rainbow_ball" position="8.5 0.1 0" scale="0.15 0.15 0.15" sq-rigidbody="mass: 0.3; useGravity: true;" src="#rainbow_strip" repeat="1 1" color="#fff" side="front"></a-sphere>
+        <!-- ball && player respawner -->
+        <a-box respawner sq-collider sq-triggercollider position="0 -2011 0" rotation="0 0 0" scale="40000 4000 40000" color="#006900" material="transparent: true; opacity: 0"></a-box>
+        
+        <!-- The wall sections -->
+        <a-box sq-climbable sq-collider position="9.5 0.8 0" rotation="0 90 0" scale="19 1.6 0.2" src="#brickJoin" repeat="10 2" color="brown"></a-box>
+        <a-box sq-climbable sq-collider position="-9.5 0.8 0" rotation="0 90 0" scale="19 1.6 0.2" src="#brickJoin" repeat="10 2" color="brown"></a-box>
+        <a-box sq-climbable sq-collider position="0 0.8 9.5" rotation="0 0 0" scale="19 1.6 0.2" src="#brickJoin" repeat="10 2" color="brown" ></a-box>
+        <a-box sq-climbable sq-collider position="0 0.8 -9.59693" rotation="0 0 0" scale="19 1.6 0.2" src="#brickJoin" repeat="10 2" color="brown"></a-box>
+        
+        <!-- The wall pillars -->
+        <a-box sq-climbable material="repeat: 0.4 1.2" position="9.5 0.9 0" rotation="0 90 0" scale="0.5 1.8 0.3" src="#brickJoin" color="brown" >
+          <a-text value="+x" position="0 0 -0.52" rotation="0 180 0" color="#666" align="center"></a-text>
+        </a-box> 
+        <a-box sq-climbable material="repeat: 0.4 1.2" position="-9.5 0.9 0" rotation="0 90 0" scale="0.5 1.8 0.3" src="#brickJoin" color="brown" >
+          <a-text value="-x" position="0 0 0.52" color="#666" align="center"></a-text>
+        </a-box>
+        <a-box sq-climbable material="repeat: 0.4 1.2" position="0 0.9 -9.59766" rotation="0 0 0" scale="0.5 1.8 0.3" src="#brickJoin" color="brown" >
+          <a-text value="-z" position="0 0 0.52" color="#666" align="center"></a-text>
+        </a-box>
+        <a-box sq-climbable material="repeat: 0.4 1.2" position="0 0.9 9.5" rotation="0 0 0" scale="0.5 1.8 0.3" src="#brickJoin" color="brown" >
+          <a-text value="+z" position="0 0 -0.52" rotation="0 180 0" color="#666" align="center"></a-text>
+        </a-box>
+      </a-entity>
+      
+      
+      
+      
+      <!-- quick death button -->
+      <script>
+        AFRAME.registerComponent('fast-death-button', {
+          init: function() {
+            this.el.addEventListener('click', ()=>{
+              setInterval(() => {
+                let new_parametric = document.createElement('a-box');
+                new_parametric.setAttribute('sq-parametric', 'slices: 100; stacks: 100; type: natica;');
+                new_parametric.setAttribute('material', 'side: double');
+                new_parametric.setAttribute('color', 'rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')');
+                new_parametric.setAttribute('scale', (Math.floor(Math.random() * (+51 + 1 - +1)) + +1)+' '+(Math.floor(Math.random() * (+51 + 1 - +1)) + +1)+' '+(Math.floor(Math.random() * (+51 + 1 - +1)) + +1));
+                new_parametric.setAttribute('rotation', (Math.floor(Math.random() * (+360 + 1 - +0)) + +0)+' '+(Math.floor(Math.random() * (+360 + 1 - +0)) + +0)+' '+(Math.floor(Math.random() * (+360 + 1 - +0)) + +0));
+                new_parametric.setAttribute('position', (Math.floor(Math.random() * (+400 + 1 - -400)) + -400)+' '+(Math.floor(Math.random() * (+400 + 1 - -400)) + -400)+' '+(Math.floor(Math.random() * (+400 + 1 - -400)) + -400));
+                document.querySelector('a-scene').appendChild(new_parametric);
+              },0.420);
+            });
+          }
+        });
+      </script>
+      <a-box sq-collider sq-interactable fast-death-button position="-7 0.05 -10.2" color="#210000" rotation="270 180 0" depth="0.05" width="0.69" height="0.6">
+        <a-text value="kill\nthyself\nquickly" position="0 0 0.03" scale="0.69 0.69 0.69" color="#f00" align="center"></a-text>
+      </a-box>
+      <!-- slow death button -->
+      <script>
+        AFRAME.registerComponent('slow-death-button', {
+          init: function() {
+            this.el.addEventListener('click', ()=>{
+              setInterval(() => {
+                let new_parametric = document.createElement('a-box');
+                new_parametric.setAttribute('sq-parametric', 'slices: 100; stacks: 100; type: natica;');
+                new_parametric.setAttribute('material', 'side: double');
+                new_parametric.setAttribute('color', 'rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')');
+                new_parametric.setAttribute('scale', (Math.floor(Math.random() * (+51 + 1 - +1)) + +1)+' '+(Math.floor(Math.random() * (+51 + 1 - +1)) + +1)+' '+(Math.floor(Math.random() * (+51 + 1 - +1)) + +1));
+                new_parametric.setAttribute('rotation', (Math.floor(Math.random() * (+360 + 1 - +0)) + +0)+' '+(Math.floor(Math.random() * (+360 + 1 - +0)) + +0)+' '+(Math.floor(Math.random() * (+360 + 1 - +0)) + +0));
+                new_parametric.setAttribute('position', (Math.floor(Math.random() * (+400 + 1 - -400)) + -400)+' '+(Math.floor(Math.random() * (+400 + 1 - -400)) + -400)+' '+(Math.floor(Math.random() * (+400 + 1 - -400)) + -400));
+                document.querySelector('a-scene').appendChild(new_parametric);
+              },420);
+            });
+          }
+        });
+      </script>
+      <a-box sq-collider sq-interactable slow-death-button position="-8 0.05 -10.2" color="#210000" rotation="270 180 0" depth="0.05" width="0.69" height="0.6">
+        <a-text value="kill\nthyself\nslowly" position="0 0 0.03" scale="0.69 0.69 0.69" color="#f00" align="center"></a-text>
+      </a-box>
+      
+      
+      
+      
+      <!-- launch button --
+      <script>
+        AFRAME.registerComponent('launch-button', {
+          init: function() {
+            this.el.addEventListener('click', ()=>{
+              addGlobalExplosionForce(696969, {x: -9, y: 0, z: -10.2}, 5)
+            });
+          }
+        });
+      </script>
+      <a-box sq-collider sq-interactable launch-button position="-9 0.05 -10.2" color="#210000" rotation="270 180 0" depth="0.05" width="0.69" height="0.6">
+        <a-text value="launch\nthyself" position="0 0 0.03" scale="0.69 0.69 0.69" color="#f00" align="center"></a-text>
+      </a-box>
+      
+      
+      
+      
+      <!-- holder for the gravity button prizes -->
+      <a-entity id="gravity-buttons" position="0 0.05 -10.2" rotation="270 180 0"><a-entity id="planet-buttons" position="5 0.4 0.4" rotation="90 0 0"></a-entity></a-entity>
+      
+      
+      
+      
+      <!-- low friction area -->
+      <a-entity id="friction-test" position="0 0 -37" rotation="0 0 0">
+        <!-- a big box for the floor with a collider on it -->
+        <a-box sq-slippery="friction: 0" sq-collider color="#006969" scale="30 0.1 30" src="#floor" repeat="5 2.5"></a-box>
+        
+        <a-entity id="caution-sign0" position="-5 0 14.2069" rotation="0 21 0">
+          <a-box color="#ff0" position="0 0.4 -0.1666" rotation="339 180 0" repeat="5 2.5" depth="0.05" width="0.69" height="0.8">
+            <a-text value="CAUTION\nslippery\nfloor" position="0 0 0.03" scale="0.69 0.69 0.69" color="#000" align="center"></a-text>
+          </a-box>
+          <a-box color="#ff0" position="0 0.4 0.1666" rotation="339 0 0" repeat="5 2.5" depth="0.05" width="0.69" height="0.8">
+            <a-text value="CAUTION\nslippery\nfloor" position="0 0 0.03" scale="0.69 0.69 0.69" color="#000" align="center"></a-text>
+          </a-box>
+        </a-entity>
+      </a-entity>
+      
+      
+      
+      
+      <!-- high friction area -->
+      <a-entity id="high-friction" position="-37 0 -37" rotation="0 0 0">
+        <!-- a big box for the floor with a collider on it -->
+        <a-box sq-sticky sq-collider color="#690000" scale="30 0.1 30" src="#floor" repeat="5 2.5"></a-box>
+        
+        <a-entity id="caution-sign1" position="14 0 14.2069" rotation="0 420 0">
+          <a-box color="#ff0" position="0 0.4 -0.1666" rotation="339 180 0" repeat="5 2.5" depth="0.05" width="0.69" height="0.8">
+            <a-text value="CAUTION\nsticky\nfloor" position="0 0 0.03" scale="0.69 0.69 0.69" color="#000" align="center"></a-text>
+          </a-box>
+          <a-box color="#ff0" position="0 0.4 0.1666" rotation="339 0 0" repeat="5 2.5" depth="0.05" width="0.69" height="0.8">
+            <a-text value="CAUTION\nsticky\nfloor" position="0 0 0.03" scale="0.69 0.69 0.69" color="#000" align="center"></a-text>
+          </a-box>
+        </a-entity>
+      </a-entity>
+      
+      
+      
+      
+      <!-- trampoline area -->
+      <a-entity id="trampoline-area" position="-37 0 0" rotation="0 0 0">
+        <!-- a big box for the floor with a collider on it -->
+        <a-box sq-collider color="#006900" scale="30 0.1 30" src="#floor" repeat="5 2.5"></a-box>
+        
+        <!-- a ramp to get on -->
+        <a-box sq-collider color="#0ff" scale="1 0.1 5" position="0 0.625 7.42" rotation="14 0 0" repeat="5 2.5"></a-box>
+        
+        <!-- the trampoline itself -->
+        <a-entity id="trampoline" position="0 0 0" rotation="0 0 0">
+          <!-- the legs -->
+          <a-cylinder sq-climbable position="4.71 0.75 0" scale="0.025 1 0.025" rotation="0 0 0" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="-4.71 0.75 0" scale="0.025 1 0.025" rotation="0 0 0" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="0 0.75 4.71" scale="0.025 1 0.025" rotation="0 0 0" src="#galv"></a-cylinder>
+          <a-cylinder sq-climbable position="0 0.75 -4.71" scale="0.025 1 0.025" rotation="0 0 0" src="#galv"></a-cylinder>
+          
+          <!-- the jumpie area -->
+          <a-cylinder sq-collider position="0 1.25 0" scale="5 0.025 5" rotation="0 0 0" color="#000">
+            <a-cylinder sq-collider sq-triggercollider sq-gravityfield="gravity: 0 69 0" position="0 25 0" scale="0.95 50 0.95" rotation="0 0 0" material="transparent: true; opacity: 0"></a-cylinder>
+          </a-cylinder>
+        </a-entity>
+        
+      </a-entity>
+      
+      
+      
+      
+      <!-- old video player --> 
+      <!--<a-entity id="video-player" position="25 0 0" rotation="20 270 0">
+        <script src="https://sq-synced-videoplayer.glitch.me/video-player.js"></script>
+        <a-box sq-collider sq-interactable video-click color="#002100" position="0 1 0" depth="0.05" width="1.6" height="0.3">
+          <a-text value="playlist & volum" position="0 0.03 0.06" color="#0ff" align="center"></a-text>
+        </a-box>
+        <a-entity id="youtube-video"  sq-browser="mipMaps: 1; pixelsPerUnit: 1600; mode: local; url: about%3Ablank; afterLoadActions: [ { &quot;actionType&quot;: &quot;delayseconds&quot;, &quot;numParam1&quot;: 1}, {&quot;actionType&quot;: &quot;click2d&quot;, &quot;numParam1&quot;: 150, &quot;numParam2&quot;: 150}]" position="0 4.5 0" scale="10 10 10"></a-entity>
+      </a-entity>
+      
+      
+      
+      
+      <!-- portals to spaces -->
+      <script src="/portal-toggle.js"></script>
+      <a-box sq-collider sq-interactable portal-toggle id="spaces" color="#002100" position="-20 1.42 19" rotation="0 90 0" depth="0.05" width="0.69" height="0.6">
+        <a-text value="toggle\nworld\nportals" position="0 0 0.03" scale="0.69 0.69 0.69" color="#0ff" align="center"></a-text>
+      </a-box>
+      
+      
+      
+      
+      <!-- parametric geometery -->
+      <a-entity id="parametricGeometery" position="1 0 37" rotation="0 0 0">
+        <!-- a big box for the floor with a collider on it -->
+        <a-box sq-collider color="#006900" scale="30 0.1 30" src="#floor" repeat="5 2.5"></a-box>
+        
+        <!-- A 3d model of a christmas tree, because why not! -->
+        <a-entity gltf-model="https://cdn.glitch.global/537d3be1-3c9d-4443-b94c-e84d2ba3ced3/christmas_tree_polycraft.glb?v=1669127630594" position="-7 0 -4" scale=".02 .02 .02" ></a-entity>
+        
+        <!-- A custom spring ( see parametric-geometery.js )-->
+        <a-box parametric-spring color="yellow" position="0 1.3 -1" material="side: double"></a-box>
+        
+        <!-- A custom pillow ( see parametric-geometery.js )-->
+        <a-box parametric-pillow color="yellow" position="3 1.3 -1" material="side: double"></a-box>
+        
+        <!-- A custom apple ( see parametric-geometery.js )-->
+        <a-box parametric-apple material="side: double" color="yellow" scale="0.1 0.1 0.1" position="6 1.3 -1" ></a-box>
+        
+        <!-- A klein bottle -->
+        <a-box sq-parametric="slices: 100; stacks: 100; type: klein;" sq-custommaterial="shaderName: Banter/StereoscopicUnlit;" src="#threed" color="cyan" scale="0.5 0.5 0.5" position="10 1.3 -1" material="side: double" rotation="90 0 0"></a-box>
+        
+        <!-- A spring -->
+        <a-box sq-parametric="slices: 100; stacks: 100; type: spring;" material="side: double" color="blue" position="0 1.3 -5"></a-box>
+        
+        <!-- A pillow -->
+        <a-box sq-parametric="slices: 100; stacks: 100; type: pillow;" color="red" position="3 1 -4" ></a-box>
+        
+        <!-- A horn -->
+        <a-box sq-parametric="slices: 100; stacks: 100; type: horn;" material="side: double" color="orange" scale="0.5 0.5 0.5" position="6 1.5 -4" ></a-box>
+        
+        <!-- A natica -->
+        <a-box sq-parametric="slices: 100; stacks: 100; type: natica;" material="side: double" color="purple" scale="0.4 0.4 0.4" position="10 1.5 -5" ></a-box>
+        
+        <!-- a box with a sterioscopic image -->
+        <a-box src="#threed" position="0 1.5 5" sq-custommaterial="shaderName: Banter/StereoscopicUnlit;"></a-box>
+      </a-entity>
+      
+      
+      
+      
+      <!-- Raycasting --
+      <a-entity id="raycasting" position="10 0 50" rotation="0 0 0">
+        <!-- Raycast from the box with sq-raycaster, or use window.rayCast(worldPos, WorldDir) --
+        <a-box color="#006900" scale="0.1 0.1 0.1" sq-raycaster="continuous: true; distance: 42" rotation="0 90 0" animation="property: position; from: 0 2 0; to: 0 1 0; dur: 2000; delay: 2000; easing: linear; startEvents: startAnimation" animation__1="property: position; from: 0 1 0; to: 0 2 0; dur: 1900; easing: linear; startEvents: startAnimation" sq-syncloop="interval: 4">
+          <a-box color="#0ff" position="0 0 -5" scale="0.03 0.03 10"></a-box>
+        </a-box>
+        
+        <!-- Some targets to hit, they must have sq-interactable and sq-collider. Then you can handle color changes by listenting for the intersect event. --
+        <a-box sq-interactable sq-collider change-box-colour color="#696969" position="-5 1 0" scale="1 0.1 1"></a-box>
+        <a-box sq-interactable sq-collider change-box-colour color="#696969" position="-5 1.2 0" scale="1 0.1 1"></a-box>
+        <a-box sq-interactable sq-collider change-box-colour color="#696969" position="-5 1.4 0" scale="1 0.1 1"></a-box>
+        <a-box sq-interactable sq-collider change-box-colour color="#696969" position="-5 1.6 0" scale="1 0.1 1"></a-box>
+        <a-box sq-interactable sq-collider change-box-colour color="#696969" position="-5 1.8 0" scale="1 0.1 1"></a-box>-->
+      </a-entity>
+    </a-scene></div>
+  </body>
+</html>
