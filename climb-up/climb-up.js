@@ -155,5 +155,5 @@ async function create() {
 }
 
 window.loadDoneCallback = () => {
-  if(window.isBanter){movePlayer(create();}
+  if(window.isBanter){create();}
 }
