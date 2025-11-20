@@ -11,7 +11,7 @@ AFRAME.registerComponent('respawner', {
         let z = Math.random()*max_size;
         if(Math.round(Math.random())){x = -x;}
         if(Math.round(Math.random())){z = -z;}
-        movePlayer({x: x, y: -2000, z: z});
+        movePlayer({x: x, y: 4000, z: z});
         lockPlayer();
         let place = 'banter://sq-community.glitch.me';
         const raw_users = await fetch('https://sq-community.glitch.me/user-buttons.json');
@@ -165,6 +165,8 @@ async function create() {
   holder.appendChild(next);
   holder.appendChild(level_display);
   document.querySelector('a-scene').appendChild(holder);
+  let playerY = (level*103);
+  movePlayer({x: 0, y: playerY, z: 2});
   unlockPlayer();
 }
 
