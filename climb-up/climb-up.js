@@ -112,7 +112,7 @@ async function thisLevel() {
   // create text
   let txtval = 'You have climbed\n'+level+' level';
   if (level != 1){txtval = txtval + 's';}
-  if (level >= 200){txtval = txtval + '\n enjoy the floating point errors\n:)'; box.setAttribute('height', '0.6'); box.setAttribute('width', '1.1');}
+  if (level >= 200){txtval = txtval + '\n enjoy the floating point errors\n:)'; box.setAttribute('height', '0.6'); box.setAttribute('width', '1.3');}
   let text = document.createElement('a-text');
   text.setAttribute('color', '#'+red+green+blue);
   text.setAttribute('position', '0 0 0.03');
