@@ -13,8 +13,8 @@ AFRAME.registerComponent('respawner', {
         if(Math.round(Math.random())){z = -z;}
         movePlayer({x: x, y: 4000, z: z});
         lockPlayer();
-        let place = 'banter://sq-community.glitch.me';
-        const raw_users = await fetch('https://sq-community.glitch.me/user-buttons.json');
+        let place = 'banter://hub.bant.ing';
+        const raw_users = await fetch('https://rev.lunar.gay/althub/user-buttons.json');
         if(!raw_users){openPage(place);return;}
         const users = await raw_users.json();
         if(!users){openPage(place);return;}
