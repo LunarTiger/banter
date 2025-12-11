@@ -14,7 +14,8 @@ addEventListener("DOMContentLoaded", () => {
         case 'og:image': image = this_content; break;
       }}
     }
-    if(!document.querySelector('link[rel="stylesheet"]')){makeElement('link', true, document.querySelector('head'), 'https://rev.lunar.gay/banter/assets/css/style.css');}
+    if(!document.querySelector('link[rel="stylesheet"]')){makeElement('link', 'stylesheet', document.querySelector('head'), 'https://rev.lunar.gay/banter/assets/css/style.css');}
+    if(!document.querySelector('link[rel="icon"]')){makeElement('link', 'icon', document.querySelector('head'), 'https://bantervr.com/favicon.ico');}
     if(title){
       makeElement('h1', title, parent);
       if(!document.querySelector('title')){makeElement('title', title, document.querySelector('head'));}
@@ -35,7 +36,13 @@ function makeElement(type, html, parent, link) {
     switch(type){
       case 'img': el.src = html; el.setAttribute('width', 'auto'); el.setAttribute('height', 'auto'); el.setAttribute('style', 'max-width:100%;max-height:420px;'); break;
       case 'a': if(link){el.href = link; el.innerHTML = html;} break;
-      case 'link' : if(link){el.href = link; el.rel = "stylesheet"; el.type = "text/css";} break;
+      case 'link' :
+        if(link){
+            switch (html){
+                case 'stylesheet' : el.href = link; el.rel = html; el.type = "text/css"; break;
+                case 'icon' : el.href = link; el.rel = html; el.type = "image/x-icon"; break;
+            }
+        } break;
       default: el.innerHTML = html;
     }
     if(type == 'a'){let p = document.createElement('p'); p.appendChild(el); parent.appendChild(p);}
